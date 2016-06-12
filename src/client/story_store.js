@@ -5,7 +5,7 @@ export default class StoreStore {
     this._data = {};
   }
 
-  addStory(kind, name, fn) {
+  addStory(kind, name, story) {
     if (!this._data[kind]) {
       this._data[kind] = {
         kind,
@@ -17,7 +17,7 @@ export default class StoreStore {
     this._data[kind].stories[name] = {
       name,
       index: cnt++,
-      fn,
+      story,
     };
   }
 
@@ -50,7 +50,7 @@ export default class StoreStore {
       return null;
     }
 
-    return storyInfo.fn;
+    return storyInfo.story;
   }
 
   removeStoryKind(kind) {

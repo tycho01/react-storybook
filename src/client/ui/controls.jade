@@ -1,0 +1,15 @@
+.main
+  h3.header Ng2 Storybook
+  div(*ngFor=`#kind of kindNames`)
+    .kind(
+      '(click)'=`onKind.emit(kind)`
+      '[ngClass]'=`{ 'selected': kind === selectedKind }`
+    )
+      | {{kind}}
+    .stories(*ngIf=`kind === selectedKind`)
+      .story(
+        *ngFor=`#story of getStories(selectedKind)`
+        '(click)'=`onStory.emit(story)`
+        '[ngClass]'=`{ 'selected': story === selectedStory }`
+      )
+        | {{story}}

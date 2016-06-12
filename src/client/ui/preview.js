@@ -1,38 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReadBox from 'redbox-react';
-import {
-  getStoryStore,
-} from '../';
+import { getStoryStore } from '../';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation, DynamicComponentLoader, CORE_DIRECTIVES, Injector } from 'angular2/core';
 
-const rootEl = document.getElementById('root');
-
-export function renderError(data, error) {
-  // We always need to render redbox in the mainPage if we get an error.
-  // Since this is an error, this affects to the main page as well.
-  const realError = new Error(error.message);
-  realError.stack = error.stack;
-  const redBox = (<ReadBox error={realError} />);
-  ReactDOM.render(redBox, rootEl);
-}
-
-export function renderMain(data) {
-  const NoPreview = () => (<p>No Preview Available!</p>);
-  const noPreview = (<NoPreview />);
-  const { selectedKind, selectedStory } = data;
-
-  const story = getStoryStore().getStory(selectedKind, selectedStory);
-  if (!story) {
-    return ReactDOM.render(noPreview, rootEl);
+@Component({
+  selector: 'preview',
+  template: require('./preview.jade'),
+  // styles: [
+  //   require('./preview.less'),
+  // ],
+  // encapsulation: ViewEncapsulation.Native,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  directives: [CORE_DIRECTIVES],
+})
+export class Preview {
+  @Input() data;
+  constructor(dcl: DynamicComponentLoader) {
+    this.dcl = dcl;
   }
-
-  return ReactDOM.render(story(), rootEl);
-}
-
-export default function renderPreview(data) {
-  if (data.error) {
-    return renderError(data, data.error);
+  get data() {
+    return this._data;
   }
+  set data(x) {
+    // if(_.isUndefined(x)) return;
+    this._data = x;
+    const { selectedKind, selectedStory } = x;
+    this.story = getStoryStore().getStory(selectedKind, selectedStory);
+    { comp: this.comp, deps: this.deps } = this.story;
+    this.dcl.loadAsRoot(this.comp, '#story', Injector.resolveAndCreate(this.deps));
+    // do I need to manually do ChangeDetectorRef crap here?
+  }
+};
 
-  return renderMain(data);
-}
+Preview.annotations = [
+  [DynamicComponentLoader],
+  [Injector],
+];

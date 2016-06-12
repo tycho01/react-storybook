@@ -1,71 +1,58 @@
-import React from 'react';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from 'angular2/core';
+import { StorybookControls } from './controls';
+import { Preview } from './preview';
+import { ActionLogger } from './action_logger';
+import stringify from 'json-stringify-safe';
+import { getSyncedStore } from '../';
+const syncedStore = getSyncedStore();
 
-class Layout extends React.Component {
-  componentWillMount() {
+@Component({
+  selector: 'layout',
+  template: require('./layout.jade'),
+  styles: [
+    require('./layout.less'),
+  ],
+  encapsulation: ViewEncapsulation.Native,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  directives: [
+    StorybookControls,
+    Preview,
+    ActionLogger,
+  ],
+})
+export class Layout {
+  ngOnInit() {
     this.updateHeight();
-  }
-
-  componentDidMount() {
     window.addEventListener('resize', this.updateHeight.bind(this));
   }
 
   updateHeight() {
-    const { documentElement, body } = document;
-    let height = documentElement.clientHeight || body.clientHeight;
-    height -= 20;
-    this.setState({ height });
+    const { docEl, body } = document;
+    this.height = (docEl.clientHeight || body.clientHeight) - 20;
   }
 
-  render() {
-    const { controls, preview, actionLogger } = this.props;
-    const { height } = this.state;
-
-    const rootStyles = {
-      height,
-      padding: 8,
-      backgroundColor: '#F7F7F7',
-    };
-    const controlsStyle = {
-      width: 240,
-      float: 'left',
-      height: '100%',
-      overflowY: 'auto',
-    };
-
-    const actionStyle = {
-      height: 150,
-      marginLeft: 250,
-    };
-
-    const previewStyle = {
-      height: height - actionStyle.height - 25,
-      marginLeft: 250,
-      border: '1px solid #ECECEC',
-      borderRadius: 4,
-      padding: 5,
-      backgroundColor: '#FFF',
-    };
-
-    return (
-      <div style={rootStyles}>
-        <div style={controlsStyle}>
-          {controls}
-        </div>
-        <div style={previewStyle}>
-          {preview}
-        </div>
-        <div style={actionStyle}>
-          {actionLogger}
-        </div>
-      </div>
-    );
+  getLog(data) {
+    const { actions = [] } = data;
+    return actions
+      .map(action => stringify(action, null, 2))
+      .join('\n\n');
   }
-}
 
-Layout.propTypes = {
-  controls: React.PropTypes.element.isRequired,
-  preview: React.PropTypes.element.isRequired,
-  actionLogger: React.PropTypes.element.isRequired,
+  // Event handlers
+  setSelectedKind(data, kind) {
+    const newData = { ...data };
+    const stories = newData.storyStore
+      .find(item => item.kind === kind).stories;
+
+    newData.selectedKind = kind;
+    newData.selectedStory = stories[0];
+    syncedStore.setData(newData);
+  }
+
+  setSelectedStory(data, block) {
+    const newData = { ...data };
+    newData.selectedStory = block;
+    syncedStore.setData(newData);
+  }
+
 };
-
-export default Layout;

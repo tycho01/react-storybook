@@ -4,7 +4,7 @@ CSS is a dark area of React. There are tons of ways to write CSS with React.
 
 > Arunoda wrote as [article](https://voice.kadira.io/state-of-react-and-css-501d179443d3) about that recently as well. Have a [look at it](https://voice.kadira.io/state-of-react-and-css-501d179443d3).
 
-So, React Storybook allows you to write CSS as you like. It's configurable.
+So, Ng2 Storybook allows you to write CSS as you like. It's configurable.
 
 ## TOC
 
@@ -14,13 +14,13 @@ So, React Storybook allows you to write CSS as you like. It's configurable.
 
 ## CSS in JavaScript
 
-By default, React Storybook doesn't come with any CSS setup. That's because there is no single default option everyone uses. But, if you write CSS using JavaScript, you can use Storybook without any configuration.
+By default, Ng2 Storybook doesn't come with any CSS setup. That's because there is no single default option everyone uses. But, if you write CSS using JavaScript, you can use Storybook without any configuration.
 
 This is also true if you use a UI framework like [Material UI](https://github.com/callemall/material-ui).
 
 ## CSS webpack Loaders
 
-Usually, we use CSS with the help of webpack and we use CSS loaders inside our app. You can ask React Storybook to use the same loaders. It's pretty simple.
+Usually, we use CSS with the help of webpack and we use CSS loaders inside our app. You can ask Ng2 Storybook to use the same loaders. It's pretty simple.
 
 Let's say you are using the style loader inside your app. Then, your webpack config would usually look like this:
 
@@ -52,7 +52,7 @@ module.exports = {
 
 Now, let's customize React Stoybook to use these CSS modules.
 
-> By default, React Storybook uses the babel loader for JavaScript. So, you don't need to add it.
+> By default, Ng2 Storybook uses the babel loader for JavaScript. So, you don't need to add it.
 
 Create a file `.storybook/webpack.config.js`. Then add the following content to it:
 
@@ -91,15 +91,15 @@ Now you can work with CSS files. Follow these steps:
 
 Meteor will automatically import any CSS files into your app. You can also use Less, SCSS or other preprocessors via build-time packages.
 
-React Storybook cannot import CSS automatically. But instead, you can do this:
+Ng2 Storybook cannot import CSS automatically. But instead, you can do this:
 
-* You can configure React Storybook to use a CSS loader.
+* You can configure Ng2 Storybook to use a CSS loader.
 * Then import the main CSS file(s) into `.storybook/config.js`.
 * Then import component-specific CSS file(s) right into your story files.
 
-**Let's configure React Storybook to use the style loader inside a Meteor app.**
+**Let's configure Ng2 Storybook to use the style loader inside a Meteor app.**
 
-* Make sure you've added React Storybook properly inside the app.
+* Make sure you've added Ng2 Storybook properly inside the app.
 * Then install style loader with `npm install --save-dev style-loader raw-loader`.
 * Then create a file called `.storybook/webpack.config.js` with the following content
 

@@ -1,0 +1,15 @@
+.root('[ngStyle]'=`{ 'height': height }`)
+  controls.controls(
+    '[storyStore]'=`data.storyStore`
+    '[selectedKind]'=`data.selectedKind`
+    '[selectedStory]'=`data.selectedStory`
+    '[onKind]'=`setSelectedKind(data)`
+    '[onStory]'=`setSelectedStory(data)`
+  )
+  //- preview
+  iframe.preview(
+    '[ngStyle]'=`{ 'height': height - actionStyle.height - 25 }`
+    '[src]'=`/iframe?dataId=${data.dataId}`
+  )
+  action-logger.action('[actionLog]'=`getLog(data)`)
+  

@@ -4,6 +4,26 @@ import fs from 'fs';
 
 const logger = console;
 
+var babelSettings = {
+	cacheDirectory: true,
+	"presets": [
+		"es2015",
+    "stage-2",
+    "stage-1",
+		"stage-0",
+	],
+	"plugins": [
+		"syntax-async-functions",
+		"transform-regenerator",
+		"transform-runtime",
+		"add-module-exports",
+		"transform-decorators-legacy", // @
+		"angular2-annotations",	// @Component, etc.
+		"transform-class-properties",
+		"transform-flow-strip-types",
+	],
+};
+
 const config = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
@@ -31,12 +51,19 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel',
-        query: { presets: ['react', 'es2015', 'stage-2'] },
+        query: babelSettings,
         exclude: [path.resolve('./node_modules'), path.resolve(__dirname, 'node_modules')],
         include: [path.resolve('./'), __dirname],
       },
+      { test: /\.ts$/, loader: 'ts' },
+      { test: /\.jade$/, loader: 'html!jade-html' },
+      { test: /\.css$/, loader: 'raw' },
+      { test: /\.less$/, loader: 'raw!less' },
     ],
   },
+  resolve: {
+		extensions: ['', '.js', '.ts', '.html', '.jade', '.css', '.less', '.sass', '.scss'],
+	},
 };
 
 // add config path to the entry

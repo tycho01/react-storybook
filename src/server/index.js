@@ -5,8 +5,8 @@ process.env.NODE_ENV = 'production';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import getIndexHtml from './index.html';
-import getIframeHtml from './iframe.html';
+let indexPage = require('./index.jade');
+let iframePage = require('./iframe.jade');
 import express from 'express';
 import program from 'commander';
 import packageJson from '../../package.json';
@@ -50,17 +50,17 @@ app.use(webpackDevMiddleware(compiler, devMiddlewareOptions));
 app.use(webpackHotMiddleware(compiler));
 
 app.get('/', function (req, res) {
-  res.send(getIndexHtml());
+  res.send(indexPage);
 });
 
 app.get('/iframe', function (req, res) {
-  res.send(getIframeHtml());
+  res.send(iframePage);
 });
 
 app.listen(program.port, function (error) {
   if (error) {
     throw error;
   } else {
-    logger.info(`\nReact Storybook started on => http://localhost:${program.port}/ \n`);
+    logger.info(`\nNg2 Storybook started on => http://localhost:${program.port}/ \n`);
   }
 });

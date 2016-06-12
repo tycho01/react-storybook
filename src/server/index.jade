@@ -1,0 +1,8 @@
+// determine uuid at compile-time?
+doctype html
+head
+  title Ng2 Storybook
+  script(type='text/javascript').
+    window.dataId = require('uuid').v4();
+#root
+  script(src='/static/admin.bundle.js')

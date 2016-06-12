@@ -1,14 +1,14 @@
-# React Storybook
+# Ng2 Storybook
 
 Now you can develop and design React UI components without running your app.
 
-![React Storybook Screenshot](docs/react-storybook-screenshot.png)
+![Ng2 Storybook Screenshot](docs/react-storybook-screenshot.png)
 
-You just load your UI components into the React Storybook and start developing them.
+You just load your UI components into the Ng2 Storybook and start developing them.
 
 This functionality allows you to develop UI components rapidly without worrying about the app. It will improve your team’s collaboration and feedback loop.
 
-> Have a look at this article on [Introducing React Storybook](https://medium.com/@arunoda/ec27f28de1e2).
+> Have a look at this article on [Introducing Ng2 Storybook](https://medium.com/@arunoda/ec27f28de1e2).
 
 ## Features
 
@@ -23,7 +23,7 @@ This functionality allows you to develop UI components rapidly without worrying 
 
 ## Demo
 
-Let's look at what React Storybook does. First clone the following repo:
+Let's look at what Ng2 Storybook does. First clone the following repo:
 
 ```
 git clone https://github.com/kadira-samples/react-storybook-demo
@@ -38,15 +38,15 @@ npm install
 npm run storybook
 ```
 
-This will start your Storybook in <http://localhost:9001>. Open that URL in your browser. You will see the React Storybook UI:
+This will start your Storybook in <http://localhost:9001>. Open that URL in your browser. You will see the Ng2 Storybook UI:
 
-![React Storybook in action](docs/react-storybook-demo.gif)
+![Ng2 Storybook in action](docs/react-storybook-demo.gif)
 
 Edit some of the components in the `components` directory and see how they reflect in the Storybook UI. We define stories inside the `components/stories` directory. Have a play with that as well.
 
 ## Getting Started
 
-Now let's add support for React Storybook to your app. First of all, add the `@kadira/storybook` NPM package to your app:
+Now let's add support for Ng2 Storybook to your app. First of all, add the `@kadira/storybook` NPM package to your app:
 
 ```
 npm i --save-dev @kadira/storybook
@@ -117,17 +117,17 @@ That's it. Now simply run “npm run storybook” and start developing your comp
 
 ## Learn More
 
-There are many things you can do with React Storybook. You can explore them with the following links:
+There are many things you can do with Ng2 Storybook. You can explore them with the following links:
 
 * [Setting up for CSS](docs/setting-up-for-css.md)
 * [API and configurations](docs/api.md)
 * [Guideline for writing stories](docs/guidelines.md)
 * [Known Issues](docs/known_issues.md)
-* How React Storybook works (coming soon)
+* How Ng2 Storybook works (coming soon)
 
 ## Sample Apps
 
-React Storybook is very powerful and you can use it with any kind of app. Here's a list of sample apps configured for React Storybook:
+Ng2 Storybook is very powerful and you can use it with any kind of app. Here's a list of sample apps configured for Ng2 Storybook:
 
 * [Very simple demo](https://github.com/kadira-samples/react-storybook-simple-demo)
 * [Redux to-do app](https://github.com/kadira-samples/react-storybook-demo)

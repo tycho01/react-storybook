@@ -1,3 +1,3 @@
-dist
-node_modulesi
+/dist
+/node_modules
 *.log

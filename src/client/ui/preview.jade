@@ -1,0 +1,8 @@
+.error(*ngIf=`data.error`)
+  h1 {{data.error.message}}
+  p {{data.error.stack}}
+.preview(*ngIf=`!data.error`)
+  .story(*ngIf=`story`)
+    #story(#story)
+  .none(*ngIf=`!story`)
+    p No Preview Available!

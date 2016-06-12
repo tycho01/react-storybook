@@ -1,6 +1,6 @@
 # API
 
-You can configure React Storybook in different ways. We'll discuss them here.
+You can configure Ng2 Storybook in different ways. We'll discuss them here.
 
 ## TOC
 
@@ -18,11 +18,11 @@ You can configure React Storybook in different ways. We'll discuss them here.
 
 ## Command Line API
 
-React Storybook comes with a command line API, which you usually use inside a NPM script. Here's the options it has:
+Ng2 Storybook comes with a command line API, which you usually use inside a NPM script. Here's the options it has:
 
 ### Port
 
-You must set a port where the React Storybook starts it's web server. Here's how to specify it:
+You must set a port where the Ng2 Storybook starts it's web server. Here's how to specify it:
 
 ```
 start-storybook -p 6977
@@ -30,9 +30,9 @@ start-storybook -p 6977
 
 ### Static Directory
 
-Sometimes, you ship your static files directly inside your project. In Meteor apps, this is done with the `public` directory in the app root. So, you can ask React Storybook to serve those static files.
+Sometimes, you ship your static files directly inside your project. In Meteor apps, this is done with the `public` directory in the app root. So, you can ask Ng2 Storybook to serve those static files.
 
-Here's how to tell React Storybook to use that directory to load static files:
+Here's how to tell Ng2 Storybook to use that directory to load static files:
 
 ```
 start-storybook -p 6977 -s ./public
@@ -40,7 +40,7 @@ start-storybook -p 6977 -s ./public
 
 ## Story Creation API
 
-We need to create stories to show your components inside React Storybook. For that, we need to use this API.
+We need to create stories to show your components inside Ng2 Storybook. For that, we need to use this API.
 
 ### Creating Stories
 
@@ -63,7 +63,7 @@ Here you can chain the `add` method and create as many as stories as you need.
 
 ### Creating Actions
 
-Usually, our components accept event handlers. Actions help us to debug those event handlers. These actions are logged in the `Action Logger` in React Storybook.
+Usually, our components accept event handlers. Actions help us to debug those event handlers. These actions are logged in the `Action Logger` in Ng2 Storybook.
 
 This is how we can create an action:
 
@@ -96,11 +96,11 @@ Then, when you click on the button, it will log something like this into the Act
 
 Here we can see the name we've mentioned when creating the action. After that, we can see the arguments passed to the event handler onClick. In this case, we've three arguments. `[SyntheticMouseEvent]` is the actual event object passed by React and you can use that to get more details.
 
-> For simplicity, React Storybook does not show the actual object. Instead it will show `[SyntheticMouseEvent]`.
+> For simplicity, Ng2 Storybook does not show the actual object. Instead it will show `[SyntheticMouseEvent]`.
 
 ## Basic Configurations
 
-React Storybook uses a JavaScript file at `.storybook/config.js` as the entry point. This is the file loaded by webpack when it's initializing. You can configure a few things inside it.
+Ng2 Storybook uses a JavaScript file at `.storybook/config.js` as the entry point. This is the file loaded by webpack when it's initializing. You can configure a few things inside it.
 
 ### Loading Modules
 
@@ -134,11 +134,11 @@ configure(loadStories, module);
 
 ### Configure Modules for Testing
 
-React Storybook is not your app. So, sometimes you won’t be able to use some of the APIs and functionalities inside it. So, you need to turn them off or do something else.
+Ng2 Storybook is not your app. So, sometimes you won’t be able to use some of the APIs and functionalities inside it. So, you need to turn them off or do something else.
 
 Let's have a look at an example.
 
-In some of our apps, we use [`react-komposer`](https://github.com/kadirahq/react-komposer) (especially in Mantra apps). So, if you use any container created by `react-komposer`, it usually throws an error since React Storybook does not initialize them properly.
+In some of our apps, we use [`react-komposer`](https://github.com/kadirahq/react-komposer) (especially in Mantra apps). So, if you use any container created by `react-komposer`, it usually throws an error since Ng2 Storybook does not initialize them properly.
 
 In such a scenario, you can disable `react-komposer` like this:
 
@@ -157,7 +157,7 @@ configure(loadStories, module);
 
 ## Custom webpack Configurations
 
-React Storybook is built on top of webpack. If you need, you can customize the webpack configurations used by React Storybook.
+Ng2 Storybook is built on top of webpack. If you need, you can customize the webpack configurations used by Ng2 Storybook.
 
 We usually use this feature to add CSS support.
 
@@ -182,4 +182,4 @@ module.exports = {
 }
 ```
 
-> Usually, there are a lot of things we can do with webpack, but React Storybook allows you to add only custom loaders and plugins.
+> Usually, there are a lot of things we can do with webpack, but Ng2 Storybook allows you to add only custom loaders and plugins.
