@@ -1,18 +1,16 @@
-#!/usr/bin/env node
+// process.env.NODE_ENV = 'production';
 
-process.env.NODE_ENV = 'production';
-
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import { webpack } from 'webpack';
+import { webpackDevMiddleware } from 'webpack-dev-middleware';
+import { webpackHotMiddleware } from 'webpack-hot-middleware';
 let indexPage = require('./index.jade');
 let iframePage = require('./iframe.jade');
-import express from 'express';
-import program from 'commander';
-import packageJson from '../../package.json';
-import config from './webpack.config';
-import path from 'path';
-import fs from 'fs';
+import { express } from 'express';
+import { program } from 'commander';
+import { packageJson } from '../../package.json';
+import { config } from './webpack.config';
+import { path } from 'path';
+import { fs } from 'fs';
 
 const logger = console;
 

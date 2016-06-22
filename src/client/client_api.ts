@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/subject/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 export default class ClientApi {
   constructor({ syncedStore, storyStore }) {

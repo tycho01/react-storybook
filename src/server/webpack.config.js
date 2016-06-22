@@ -1,6 +1,6 @@
-import path from 'path';
-import webpack from 'webpack';
-import fs from 'fs';
+import { path } from 'path';
+import { webpack } from 'webpack';
+import { fs } from 'fs';
 
 const logger = console;
 

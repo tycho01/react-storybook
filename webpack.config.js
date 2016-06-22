@@ -4,7 +4,7 @@ var babelSettings = {
 	cacheDirectory: true,
 	'presets': [
 		'es2015', // used for 'import', sweetjs calls this too; tried alt. `{ foo } = require('pkg')` but fails with lazy imports
-		// 'stage-0', // 0 for await, 1 for [assigned methods](https://github.com/jeffmo/es-class-fields-and-static-properties)
+		'stage-0', // 0 for await, 1 for [assigned methods](https://github.com/jeffmo/es-class-fields-and-static-properties)
 	],
 	'plugins': [
 		'syntax-async-functions', // async/await
@@ -50,7 +50,7 @@ module.exports = {
 				test: /\.js$/,
 				//exclude: [ path.resolve(__dirname, 'node_modules'), ],
 				include: [
-					path.resolve(__dirname, 'app'),
+					path.resolve(__dirname, 'src'),
 				],
 				loaders: [
 					// sweet,
@@ -65,6 +65,7 @@ module.exports = {
 			// ^ ng2 sucks for css though -- `css` loader pre-resolves urls, `style` injects into DOM.
 			{ test: /\.less$/, loader: 'style!css!less' },
 			{ test: /\.css$/, loader: 'style!css' },
+			{ test: /\.json$/, loader: 'json' },
 			// { test: /\.(jpe?g|png|gif|ttf|eot|svg|woff(2)?|wav|mp3)$/, loader: 'file' }
 		],
 	},
@@ -76,6 +77,14 @@ module.exports = {
 		// root: ['node_modules', 'app'].map((folder) => path.join(__dirname, folder))
 		modulesDirectories: ['node_modules', 'app'],
 		root: __dirname
+	},
+	node: {
+		fs: 'empty',
+		tls: 'empty',
+		net: 'empty',
+		dns: 'empty',
+		child_process: 'empty',
+		setImmediate: true
 	},
 	// noParse: [/\/dist\//],
   ts: {

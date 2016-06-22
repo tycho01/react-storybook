@@ -30,7 +30,8 @@ export default class Data {
   _onData(dataString) {
     const d = JSON.parse(dataString);
     this._data = {
-      ...d,
+      // ...d,
+      [d]: d,
       iframeMode: this._iframeMode,
     };
 
@@ -52,7 +53,7 @@ export default class Data {
   }
 
   getData() {
-    return { ...this._data };
+    return this._data;
   }
 
   setData(fields) {
