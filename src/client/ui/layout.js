@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from 'angular2/core';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { StorybookControls } from './controls';
 import { Preview } from './preview';
 import { ActionLogger } from './action_logger';

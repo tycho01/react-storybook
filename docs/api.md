@@ -48,7 +48,7 @@ This is how you can create stories:
 
 ```js
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from 'storybook';
 
 storiesOf('Button', module)
   .add('with a text', () => (
@@ -69,7 +69,7 @@ This is how we can create an action:
 
 ```js
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from 'storybook';
 
 storiesOf('Button', module)
   .add('with a text', () => (
@@ -107,7 +107,7 @@ Ng2 Storybook uses a JavaScript file at `.storybook/config.js` as the entry poin
 Loading modules is the main task of this configuration file. You can do so like this:
 
 ```js
-import { configure } from '@kadira/storybook';
+import { configure } from 'storybook';
 
 function loadStories() {
   require('../components/stories/button');
@@ -122,7 +122,7 @@ configure(loadStories, module);
 Sometimes your app has some common CSS files, so this is the best place to load them. In our Redux to-do example, we load todomvc CSS like this:
 
 ```js
-import { configure } from '@kadira/storybook';
+import { configure } from 'storybook';
 import 'todomvc-app-css/index.css'
 
 function loadStories() {
@@ -143,7 +143,7 @@ In some of our apps, we use [`react-komposer`](https://github.com/kadirahq/react
 In such a scenario, you can disable `react-komposer` like this:
 
 ```js
-import { configure } from '@kadira/storybook';
+import { configure } from 'storybook';
 import { disable } from 'react-komposer';
 
 disable();

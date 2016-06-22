@@ -1,5 +1,5 @@
 import { getStoryStore } from '../';
-import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation, DynamicComponentLoader, CORE_DIRECTIVES, Injector } from 'angular2/core';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation, DynamicComponentLoader, CORE_DIRECTIVES, Injector } from '@angular/core';
 
 @Component({
   selector: 'preview',
